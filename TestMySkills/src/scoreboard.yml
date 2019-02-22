@@ -1,0 +1,40 @@
+## Here you can edit the whole Scoreboard
+## boolean = to set the score to true / false
+## %amount% = Money of the player
+## %playername% = Name of the player
+## %onlineplayers% = Amount of the onlineplayers
+## \u27A5 = ➥
+## \u25CF = ●
+
+ScoreboardName: "&cScoreboard header"
+Score1: "&c1"
+Score2: "&c2"
+Score3: "&c3"
+Score4: "&c4"
+Score5: "&c5"
+Score6: "&c6"
+Score7: "&c7"
+Score8: "&c8"
+Score9: "&c9"
+Score10: "&c10"
+Score11: "&c11"
+Score12: "&c12"
+Score13: "&c13"
+Score14: "&c14"
+Score15: "&c15"
+
+Score1boolean: true
+Score2boolean: true
+Score3boolean: true
+Score4boolean: true
+Score5boolean: true
+Score6boolean: true
+Score7boolean: true
+Score8boolean: true
+Score9boolean: true
+Score10boolean: true
+Score11boolean: true
+Score12boolean: true
+Score13boolean: true
+Score14boolean: true
+Score15boolean: true

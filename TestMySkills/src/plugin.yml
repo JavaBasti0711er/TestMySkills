@@ -1,0 +1,14 @@
+name: TestMySkills
+author: JavaBasti
+version: 17.02.19
+main: de.testmyskills.Main
+
+commands:
+    configreload:
+      aliases: [configrl]
+    randomgg:
+      aliases: [rgg]
+    givecrystal:
+      aliases: [gc]
+    allesodernichts:
+     aliases: [aon]

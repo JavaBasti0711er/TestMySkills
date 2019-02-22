@@ -1,0 +1,107 @@
+## Edit the messages here ##
+
+## %player% = The Player who is doing the Command
+## %target% = The target Player
+## %prefix% = The Prefix of the Plugin
+## %message% = Player message
+## \u27A5 = ➥
+## \u25CF = ●
+## \u20AC = €
+
+
+Prefix: "&4&lCB &8\u25CF &7"
+
+PlayerIsNotOnline: "&cDer angegebene Spieler ist nicht online. &7(&7%target%&7)"
+YouHaveToBeAPlayer: "&cDu musst ein Spieler sein."
+CantBeUrself: "%prefix% &cDu musst einen anderen Spieler nehmen."
+RandomGGBroadcast: "%prefix% &cEs wurde ein Random GG gestartet."
+RandomGGBroadcastEnded: "%prefix% &cDas Random GG ist zuende."
+
+ConfigReloaded: "%prefix% &aDu hast die Config neu geladen."
+NoPermissions: "%prefix% &cDu hast dazu keine Rechte!"
+
+CommandNotFound: "%prefix% &cDer Command wurde nicht gefunden. &8[&c%command%&8]"
+
+Chatformat: "&e%player%&7: &f%message%"
+
+PlayersOnlineHoverText:
+  - '&7>>>>> &6&lTestServer &7<<<<<'
+  - ' &eDas ist ein TestServer'
+  - ' &aauf dem ich alle Plugins teste.'
+      
+      
+WrongCommand: "&7/gc <1-5>"
+MaxPlayers: 25
+MotdLine1: "&7&m-------------&8 [&6&lTestServer&8] &7&m-------------"
+MotdLine2: "                 &8\u25CF &eHier teste ich alle Plugins"
+
+
+EverythingOrNothing:
+  endmessage: "%prefix% &cGeld: &6%randommoney%\u20AC
+  \n%prefix% &cCoins: &6%randomcoins%"
+  
+  Money:
+    minmoney: 1
+    maxmoney: 250
+    
+  Coins:
+    mincoins: 1000
+    maxcoins: 25000000
+
+HoverOverName: "&ePlayer: &6%player%
+\n &cadd more in messages.yml"
+
+HoverOverNameCommandOnClick: "/msg %player%"
+
+
+Crystals:
+    
+  Effect1: "&7Sell Boost"
+  Effect2: "&7Token Boost"
+  Effect3: "&7EXP Boost"
+  
+  UnIdentified:
+    lore:
+    - '&7Right click it'
+    Item: "NETHER_STAR"
+    
+  Identified:
+    lore:
+    - '&6Tier: &7%tier%'
+    - '&6Effect: &7+%percentage%% %effect%'
+    Item: "NETHER_STAR"
+    
+  Tier1:
+    identifiedname: "&6T1 &eCrystal"
+    unidentifiedname: "&eUnidentified &6T1 &eCrystal"
+    minpercentage: 1
+    maxpercentage: 25
+    
+  Tier2:
+    identifiedname: "&6T2 &eCrystal"
+    unidentifiedname: "&eUnidentified &6T2 &eCrystal"
+    minpercentage: 16
+    maxpercentage: 32
+    
+  Tier3:
+    identifiedname: "&6T3 &eCrystal"
+    unidentifiedname: "&eUnidentified &6T3 &eCrystal"
+    minpercentage: 24
+    maxpercentage: 49
+    
+  Tier4:
+    identifiedname: "&6T4 &eCrystal"
+    unidentifiedname: "&eUnidentified &6T4 &eCrystal"
+    minpercentage: 31
+    maxpercentage: 86
+    
+  Tier5:
+    identifiedname: "&6T5 &eCrystal"
+    unidentifiedname: "&eUnidentified &6T5 &eCrystal"
+    minpercentage: 45
+    maxpercentage: 121
+
+
+
+## Set the Permissions for the Main Commands
+AdminPermissions: "testskills.*"
