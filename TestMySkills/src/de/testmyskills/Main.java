@@ -9,8 +9,8 @@ import de.testmyskills.commands.AllesOderNichtscmd;
 import de.testmyskills.commands.CrystalGiveCMD;
 import de.testmyskills.commands.ReloadCFG;
 import de.testmyskills.commands.randomGG;
+import de.testmyskills.events.ConfigurationSectionLearning;
 import de.testmyskills.events.MotdEvent;
-import de.testmyskills.events.RightClickListener;
 import de.testmyskills.utils.ProtocolLibImplementation;
 import de.testmyskills.utils.ScoreboardAPI;
 import de.testmyskills.utils.SetupMessages;
@@ -50,7 +50,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginCommand("randomgg").setExecutor(new randomGG(this));
 		Bukkit.getPluginCommand("configreload").setExecutor(new ReloadCFG(this));
 		Bukkit.getPluginManager().registerEvents(new randomGG(this), this);
-		Bukkit.getPluginManager().registerEvents(new RightClickListener(this), this);
+		Bukkit.getPluginManager().registerEvents(new ConfigurationSectionLearning(this), this);
 		Bukkit.getPluginManager().registerEvents(new MotdEvent(this), this);
 		Bukkit.getPluginManager().registerEvents(new ScoreboardAPI(this), this);
 		pli.listenToServerlistPackets();
