@@ -36,7 +36,7 @@ public class ConfigurationSectionLearning implements Listener {
 				String tierlores = "";
 				for (String loresinhand : pitem.getItemMeta().getLore()) {
 
-					if (loresinhand.contains("Tier")) {
+					if (loresinhand.contains("UnidTier")) {
 						String[] t = ChatColor.stripColor(pl.colorize(loresinhand)).split(" ");
 						tierlores = t[1];
 						break;

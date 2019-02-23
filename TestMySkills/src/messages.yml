@@ -31,6 +31,8 @@ PlayersOnlineHoverText:
       
       
 WrongCommand: "&7/gc <crystaltier>"
+CrystalNotAvailable: "%prefix% &7Es wurde kein Crystal gefunden."
+
 MaxPlayers: 25
 MotdLine1: "&7&m-------------&8 [&6&lTestServer&8] &7&m-------------"
 MotdLine2: "                 &8\u25CF &eHier teste ich alle Plugins"
@@ -107,7 +109,13 @@ CrystalTiers:
     unidentifiedname: "&eUnidentified &6T5 &eCrystal"
     minpercentage: 45
     maxpercentage: 121
-
+   
+  9400:
+    LoreTier: "9400"
+    identifiedname: "&6T9400 &eCrystal"
+    unidentifiedname: "&eUnidentified &6T9400 &eCrystal"
+    minpercentage: 3000
+    maxpercentage: 5500
 
 
 ## Set the Permissions for the Main Commands

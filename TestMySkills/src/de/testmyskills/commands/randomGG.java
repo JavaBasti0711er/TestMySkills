@@ -70,9 +70,14 @@ public class randomGG implements CommandExecutor, Listener {
 		Player p = e.getPlayer();
 
 		if (gg == true) {
+			for (Player all : Bukkit.getOnlinePlayers()) {
 
-			Bukkit.broadcastMessage(
-					chatformat.replaceAll("%player%", p.getName()).replaceAll("%message%", pl.colorize(randomColor())));
+				pl.clickable(all,
+						chatformat.replaceAll("%player%", p.getDisplayName()).replaceAll("%rank%", rankprefix)
+								.replaceAll("%message%", pl.colorize(String.valueOf(randomColor()))),
+						"SUGGEST_COMMAND", commandonclick.replaceAll("%player%", p.getName()),
+						hovername.replaceAll("%player%", p.getName()).replaceAll("%rank%", rankprefix2));
+			}
 		} else {
 			for (Player all : Bukkit.getOnlinePlayers()) {
 				String msg = e.getMessage();
