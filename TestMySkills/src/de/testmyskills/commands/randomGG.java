@@ -17,7 +17,7 @@ import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class randomGG implements CommandExecutor, Listener {
-
+	
 	Main pl;
 
 	public randomGG(Main instance) {
@@ -26,8 +26,8 @@ public class randomGG implements CommandExecutor, Listener {
 
 	int startgg = 11;
 	int count;
-	boolean gg = false;
-
+	
+	
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
 		SetupMessages m = pl.setupMessages;
@@ -40,13 +40,13 @@ public class randomGG implements CommandExecutor, Listener {
 			cs.sendMessage(consoleplayer);
 			return true;
 		}
-		gg = true;
+		pl.gg = true;
 		Bukkit.broadcastMessage(randomGG.replaceAll("%prefix%", prefix));
 
 		count = Bukkit.getScheduler().scheduleSyncDelayedTask(pl, new Runnable() {
 			public void run() {
 
-				gg = false;
+				pl.gg = false;
 
 				Bukkit.broadcastMessage(randomGGended.replaceAll("%prefix%", prefix));
 			}
@@ -69,15 +69,17 @@ public class randomGG implements CommandExecutor, Listener {
 		}
 		Player p = e.getPlayer();
 
-		if (gg == true) {
+		if (pl.gg == true) {
 			for (Player all : Bukkit.getOnlinePlayers()) {
 
 				pl.clickable(all,
 						chatformat.replaceAll("%player%", p.getDisplayName()).replaceAll("%rank%", rankprefix)
-								.replaceAll("%message%", pl.colorize(String.valueOf(randomColor()))),
+								.replaceAll("%message%", pl.colorize(String.valueOf(randomGGs()))),
 						"SUGGEST_COMMAND", commandonclick.replaceAll("%player%", p.getName()),
 						hovername.replaceAll("%player%", p.getName()).replaceAll("%rank%", rankprefix2));
+				e.setCancelled(true);
 			}
+
 		} else {
 			for (Player all : Bukkit.getOnlinePlayers()) {
 				String msg = e.getMessage();
@@ -90,39 +92,27 @@ public class randomGG implements CommandExecutor, Listener {
 						.replaceAll("%player%", p.getDisplayName()).replaceAll("%message%", msg)));
 				e.setCancelled(true);
 			}
+
 		}
-		e.setCancelled(true);
 
 	}
 
-	private String randomColor() {
+	@SuppressWarnings("unused")
+	private String randomGGs() {
+		SetupMessages m = pl.setupMessages;
 		Random r = new Random();
-		Integer x = r.nextInt(8);
-		if (x == 0) {
-			return "&a&lG&2&lG";
+		Integer i = 0;
+		for (String str : m.getConfigurationSection("RandomGG.randomggs").getKeys(false)) {
+			i++;
 		}
-		if (x == 1) {
-			return "&b&lG&9&lG";
-		}
-		if (x == 2) {
-			return "&c&lG&4&lG";
-		}
-		if (x == 3) {
-			return "&d&lG&5&lG";
-		}
-		if (x == 4) {
-			return "&e&lGG";
-		}
-		if (x == 5) {
-			return "&3&l&oGG";
-		}
-		if (x == 6) {
-			return "&6&lG&e&lG";
-		}
-		if (x == 7) {
-			return "&9&lGG";
+		Integer x = r.nextInt(i) + 1;
+		for (String stri : m.getConfigurationSection("RandomGG.randomggs").getKeys(false)) {
+			if (String.valueOf(x).equals(stri)) {
+				return m.getString("RandomGG.randomggs." + stri);
+			}
 		}
 		return null;
+
 	}
 
 }

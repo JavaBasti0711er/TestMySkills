@@ -86,11 +86,8 @@ public class ConfigurationSectionLearning implements Listener {
 		Integer i = 0;
 		for (String str : m.getConfigurationSection("Crystals.CrystalEffects").getKeys(false)) {
 			i++;
-
 		}
-
 		Integer x = r.nextInt(i) + 1;
-
 		for (String stri : m.getConfigurationSection("Crystals.CrystalEffects").getKeys(false)) {
 			if (String.valueOf(x).equals(stri)) {
 				return m.getString("Crystals.CrystalEffects." + stri);
@@ -108,7 +105,7 @@ public class ConfigurationSectionLearning implements Listener {
 
 		while (i1 != -1) {
 
-			org.bukkit.inventory.ItemStack it = p.getInventory().getItem(i1);
+			ItemStack it = p.getInventory().getItem(i1);
 
 			if (removedItems != amount && it != null && it.equals(itemStack)) {
 
@@ -128,7 +125,7 @@ public class ConfigurationSectionLearning implements Listener {
 
 			for (int i = diff; i != 0; i--) {
 
-				org.bukkit.inventory.ItemStack m = itemStack;
+				ItemStack m = itemStack;
 				m.setAmount(1);
 				p.getInventory().addItem(m);
 

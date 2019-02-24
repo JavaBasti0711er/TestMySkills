@@ -28,7 +28,6 @@ public class CrystalGiveCMD implements CommandExecutor {
 		String prefix = m.getString("Prefix");
 		String consoleplayer = m.getString("YouHaveToBeAPlayer");
 		String usethis = m.getString("WrongCommand");
-		String notavailable = m.getString("CrystalNotAvailable");
 
 		List<String> unidcrystallore = m.getStringList("Crystals.UnIdentified.lore");
 		Material crystalitem = Material.valueOf(m.getString("Crystals.UnIdentified.Item"));
@@ -44,20 +43,20 @@ public class CrystalGiveCMD implements CommandExecutor {
 		} else if (args.length == 1) {
 			for (String str : m.getConfigurationSection("CrystalTiers").getKeys(false)) {
 				if (args[0].equalsIgnoreCase(str)) {
-					if(str == null) {
-						p.sendMessage(notavailable.replaceAll("%prefix%", prefix));
-					}
-					ItemStack crystal = new ItemStack(crystalitem);
-					ItemMeta crystalm = crystal.getItemMeta();
-					crystalm.setDisplayName(pl.colorize(m.getString("CrystalTiers." + str + ".unidentifiedname")));
-					ArrayList<String> lore = new ArrayList<String>();
-					for (String lores : unidcrystallore) {
-						lore.add(pl.colorize(lores).replaceAll("%tier%", str));
+					if (str != null) {
 
+						ItemStack crystal = new ItemStack(crystalitem);
+						ItemMeta crystalm = crystal.getItemMeta();
+						crystalm.setDisplayName(pl.colorize(m.getString("CrystalTiers." + str + ".unidentifiedname")));
+						ArrayList<String> lore = new ArrayList<String>();
+						for (String lores : unidcrystallore) {
+							lore.add(pl.colorize(lores).replaceAll("%tier%", str));
+						}
+						crystalm.setLore(lore);
+						crystal.setItemMeta(crystalm);
+						p.getInventory().addItem(crystal);
 					}
-					crystalm.setLore(lore);
-					crystal.setItemMeta(crystalm);
-					p.getInventory().addItem(crystal);
+
 				}
 			}
 		}

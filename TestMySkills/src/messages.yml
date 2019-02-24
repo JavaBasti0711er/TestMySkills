@@ -37,6 +37,15 @@ MaxPlayers: 25
 MotdLine1: "&7&m-------------&8 [&6&lTestServer&8] &7&m-------------"
 MotdLine2: "                 &8\u25CF &eHier teste ich alle Plugins"
 
+RandomGG:
+  randomggs:
+    1: "&c&lG&4&lG"
+    2: "&b&l&oG&3&l&oG"
+    3: "&5&lGG"
+    4: "&d&l&nGG"
+    5: "&8&lG&9&lG"
+    6: "&4&lG&2&lG"
+
 
 EverythingOrNothing:
   endmessage: "%prefix% &cGeld: &6%randommoney%\u20AC
@@ -54,7 +63,6 @@ HoverOverName: "&ePlayer: &6%player%
 \n &cadd more in messages.yml"
 
 HoverOverNameCommandOnClick: "/msg %player%"
-
 
 Crystals:
   CrystalEffects:

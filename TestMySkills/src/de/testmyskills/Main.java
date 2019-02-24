@@ -25,7 +25,8 @@ public class Main extends JavaPlugin {
 	public static Main instance;
 	public SetupMessages setupMessages;
 	public SetupScoreboard setupScoreboard;
-
+	public boolean gg = false;
+	
 	public static Main getInstance() {
 		return instance;
 	}
