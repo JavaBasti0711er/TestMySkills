@@ -13,12 +13,12 @@ import de.testmyskills.commands.ReloadCFG;
 import de.testmyskills.commands.randomGG;
 import de.testmyskills.events.ConfigurationSectionLearning;
 import de.testmyskills.events.MotdEvent;
+import de.testmyskills.events.TablistPrefixAPI;
 import de.testmyskills.utils.ProtocolLibImplementation;
 import de.testmyskills.utils.ScoreboardAPI;
 import de.testmyskills.utils.SetupMessages;
 import de.testmyskills.utils.SetupScoreboard;
 import de.testmyskills.utils.SetupTablist;
-import de.testmyskills.utils.TablistPrefixAPI;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -32,7 +32,7 @@ public class Main extends JavaPlugin {
 	public SetupTablist setupTablist;
 	public boolean gg = false;
 	public Coin_API capi;
-	
+
 	public static Main getInstance() {
 		return instance;
 	}
@@ -52,6 +52,7 @@ public class Main extends JavaPlugin {
 		this.setupMessages = new SetupMessages();
 		this.setupScoreboard = new SetupScoreboard();
 		this.setupTablist = new SetupTablist();
+		TablistPrefixAPI.startScheduler();
 		Bukkit.getPluginCommand("givecrystal").setExecutor(new CrystalGiveCMD(this));
 		Bukkit.getPluginCommand("allesodernichts").setExecutor(new AllesOderNichtscmd(this));
 		Bukkit.getPluginCommand("randomgg").setExecutor(new randomGG(this));
@@ -63,7 +64,6 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new MotdEvent(this), this);
 		Bukkit.getPluginManager().registerEvents(new ScoreboardAPI(this), this);
 		Bukkit.getPluginManager().registerEvents(new TablistPrefixAPI(this), this);
-		TablistPrefixAPI.startScheduler();
 		pli.listenToServerlistPackets();
 
 	}

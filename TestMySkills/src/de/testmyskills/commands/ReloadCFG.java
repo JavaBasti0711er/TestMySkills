@@ -7,9 +7,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.testmyskills.Main;
+import de.testmyskills.events.TablistPrefixAPI;
 import de.testmyskills.utils.ScoreboardAPI;
 import de.testmyskills.utils.SetupMessages;
 import de.testmyskills.utils.SetupScoreboard;
+import de.testmyskills.utils.SetupTablist;
 
 public class ReloadCFG implements CommandExecutor {
 
@@ -23,7 +25,8 @@ public class ReloadCFG implements CommandExecutor {
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
 		SetupMessages m = pl.setupMessages;
 		SetupScoreboard sm = pl.setupScoreboard;
-
+		SetupTablist t = pl.setupTablist;
+		
 		String prefix = m.getString("Prefix");
 		String noperms = m.getString("NoPermissions");
 		String adminperms = m.getString("AdminPermissions");
@@ -39,10 +42,13 @@ public class ReloadCFG implements CommandExecutor {
 		if (p.hasPermission(adminperms)) {
 			m.load();
 			sm.load();
+			t.load();
 			for(Player all : Bukkit.getOnlinePlayers()) {
 			ScoreboardAPI.sendScoreboard(all);
+			TablistPrefixAPI.setScoreboard(all);
 			}
 			ScoreboardAPI.sendScoreboard(p);
+			TablistPrefixAPI.setScoreboard(p);
 			p.sendMessage(reloaded.replaceAll("%prefix%", prefix));
 			p.sendMessage(pl.colorize("&cPlugin coded by JavaBasti"));
 			

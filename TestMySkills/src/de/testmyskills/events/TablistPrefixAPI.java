@@ -1,4 +1,4 @@
-package de.testmyskills.utils;
+package de.testmyskills.events;
 
 import java.util.Iterator;
 
@@ -14,6 +14,7 @@ import org.bukkit.scoreboard.Team;
 import com.google.common.base.Splitter;
 
 import de.testmyskills.Main;
+import de.testmyskills.utils.SetupTablist;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class TablistPrefixAPI implements Listener {
@@ -52,9 +53,7 @@ public class TablistPrefixAPI implements Listener {
 			for (Player all : Bukkit.getOnlinePlayers()) {
 				if (PermissionsEx.getUser(all).inGroup(groupname)) {
 					rankteam.addPlayer(all);
-					
-				} else {
-					rankteam.addPlayer(all);
+					p.setPlayerListName(rankprefix + p.getName());
 				}
 
 				p.setScoreboard(sb);
@@ -81,11 +80,11 @@ public class TablistPrefixAPI implements Listener {
 			for (Player all : Bukkit.getOnlinePlayers()) {
 				if (PermissionsEx.getUser(all).inGroup(groupname)) {
 					rankteam.addPlayer(all);
-				} else {
-					rankteam.addPlayer(all);
+					p.setPlayerListName(rankprefix + p.getName());
 				}
 				setScoreboard(all);
 				setScoreboard(p);
+
 			}
 		}
 	}
