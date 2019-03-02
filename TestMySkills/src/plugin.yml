@@ -11,4 +11,5 @@ commands:
     givecrystal:
       aliases: [gc]
     allesodernichts:
-     aliases: [aon]
+     aliases: [aon] 
+    coin:

@@ -5,7 +5,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.javabasti.coinapi.economy.Coin_API;
 import de.testmyskills.commands.AllesOderNichtscmd;
+import de.testmyskills.commands.Coin_CMD;
 import de.testmyskills.commands.CrystalGiveCMD;
 import de.testmyskills.commands.ReloadCFG;
 import de.testmyskills.commands.randomGG;
@@ -15,6 +17,8 @@ import de.testmyskills.utils.ProtocolLibImplementation;
 import de.testmyskills.utils.ScoreboardAPI;
 import de.testmyskills.utils.SetupMessages;
 import de.testmyskills.utils.SetupScoreboard;
+import de.testmyskills.utils.SetupTablist;
+import de.testmyskills.utils.TablistPrefixAPI;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -25,7 +29,9 @@ public class Main extends JavaPlugin {
 	public static Main instance;
 	public SetupMessages setupMessages;
 	public SetupScoreboard setupScoreboard;
+	public SetupTablist setupTablist;
 	public boolean gg = false;
+	public Coin_API capi;
 	
 	public static Main getInstance() {
 		return instance;
@@ -42,18 +48,22 @@ public class Main extends JavaPlugin {
 
 		instance = this;
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
-
+		this.capi = new Coin_API();
 		this.setupMessages = new SetupMessages();
 		this.setupScoreboard = new SetupScoreboard();
-
+		this.setupTablist = new SetupTablist();
 		Bukkit.getPluginCommand("givecrystal").setExecutor(new CrystalGiveCMD(this));
 		Bukkit.getPluginCommand("allesodernichts").setExecutor(new AllesOderNichtscmd(this));
 		Bukkit.getPluginCommand("randomgg").setExecutor(new randomGG(this));
 		Bukkit.getPluginCommand("configreload").setExecutor(new ReloadCFG(this));
+		Bukkit.getPluginCommand("coin").setExecutor(new Coin_CMD(this));
+		Bukkit.getPluginManager().registerEvents(new Coin_CMD(this), this);
 		Bukkit.getPluginManager().registerEvents(new randomGG(this), this);
 		Bukkit.getPluginManager().registerEvents(new ConfigurationSectionLearning(this), this);
 		Bukkit.getPluginManager().registerEvents(new MotdEvent(this), this);
 		Bukkit.getPluginManager().registerEvents(new ScoreboardAPI(this), this);
+		Bukkit.getPluginManager().registerEvents(new TablistPrefixAPI(this), this);
+		TablistPrefixAPI.startScheduler();
 		pli.listenToServerlistPackets();
 
 	}

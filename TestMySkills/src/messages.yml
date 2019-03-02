@@ -37,6 +37,9 @@ MaxPlayers: 25
 MotdLine1: "&7&m-------------&8 [&6&lTestServer&8] &7&m-------------"
 MotdLine2: "                 &8\u25CF &eHier teste ich alle Plugins"
 
+CoinsBalanceFromPlayer: "%prefix% &aDeine Coins: %amount%"
+CoinsBalanceFromPlayer2: "%prefix% &aCoins von %target%: %amount%"
+
 RandomGG:
   randomggs:
     1: "&c&lG&4&lG"
@@ -63,6 +66,18 @@ HoverOverName: "&ePlayer: &6%player%
 \n &cadd more in messages.yml"
 
 HoverOverNameCommandOnClick: "/msg %player%"
+
+CoinSystem:
+  CoinWithdraw:
+    Item: "MAGMA_CREAM"
+    ItemName: "&"
+    Lore:
+      - "&eCoins: &6%amount%"
+      - "&7Rechtsklick"
+    
+    NotEnoughCoins: "%prefix% &eDu hast nicht genügend Coins."
+    CoinsWithdrawed: "%prefix% &eDu hast &6%amount% Coins &eausgezahlt."
+    NotEnoughSpaceInInventory: "%prefix% &eDu hast nicht genug Platz im Inventar."
 
 Crystals:
   CrystalEffects:

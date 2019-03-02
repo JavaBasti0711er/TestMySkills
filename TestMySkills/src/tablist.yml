@@ -1,0 +1,28 @@
+## Here you can edit the Tablist - Prefixes
+
+
+TablistPrefix:
+  Admin:
+    PexGroup: "Admin"
+    Team: "0000Admin"
+    Prefix: "&4&lAdmin &8| &7"
+  Dev:
+    PexGroup: "Dev"
+    Team: "0001Dev"
+    Prefix: "&b&lDev &8| &7"
+  Mod:
+    PexGroup: "Mod"
+    Team: "0002Mod"
+    Prefix: "&c&lMod &8| &7"
+  Sup:
+    PexGroup: "Sup"
+    Team: "0003Sup"
+    Prefix: "&9&lSup &8| &7"
+  VIP:
+    PexGroup: "VIP"
+    Team: "0004VIP"
+    Prefix: "&6&lVIP &8| &7"
+  Spieler:
+    PexGroup: "default"
+    Team: "0005Spieler"
+    Prefix: "&7&lSpieler &8| &7"

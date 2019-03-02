@@ -30,46 +30,48 @@ public class ConfigurationSectionLearning implements Listener {
 		Player p = e.getPlayer();
 		SetupMessages m = pl.setupMessages;
 		List<String> idcrystallore = m.getStringList("Crystals.Identified.lore");
-		if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-			if (e.getItem() != null) {
+		if (e.getItem() != null && e.getItem().getItemMeta() != null) {
+			if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 				ItemStack pitem = p.getItemInHand();
 				String tierlores = "";
-				if (pitem.getItemMeta().getDisplayName().contains("Unidentified")) {
-					for (String loresinhand : pitem.getItemMeta().getLore()) {
+				if (pitem != null && pitem.hasItemMeta() && pitem.getType() != Material.AIR) {
+					if (pitem.getItemMeta().getDisplayName().contains("Unidentified")) {
 
-						if (loresinhand.contains("Tier")) {
-							String[] t = ChatColor.stripColor(pl.colorize(loresinhand)).split(" ");
-							tierlores = t[1];
-							break;
-						}
-					}
+						for (String loresinhand : pitem.getItemMeta().getLore()) {
 
-					for (String str : m.getConfigurationSection("CrystalTiers").getKeys(false)) {
-						if (tierlores.equals(str)) {
-
-							ItemStack crystal = new ItemStack(Material.NETHER_STAR);
-							ItemMeta crystam = crystal.getItemMeta();
-
-							crystam.setDisplayName(pl.colorize(m.getString("CrystalTiers." + str + ".identifiedname")));
-							ArrayList<String> lore = new ArrayList<String>();
-							for (String lores : idcrystallore) {
-								lore.add(pl.colorize(lores)
-										.replaceAll("%tier%", m.getString("CrystalTiers." + str + ".LoreTier"))
-										.replaceAll("%effect%", String.valueOf(randomEffect()))
-										.replaceAll("%percentage%",
-												String.valueOf(randomPercentage(
-														m.getInt("CrystalTiers." + str + ".minpercentage"),
-														m.getInt("CrystalTiers." + str + ".maxpercentage")))));
+							if (loresinhand.contains("Tier")) {
+								String[] t = ChatColor.stripColor(pl.colorize(loresinhand)).split(" ");
+								tierlores = t[1];
+								break;
 							}
-							crystam.setLore(lore);
-							crystal.setItemMeta(crystam);
-							removeItems(p, pitem, 1);
-							p.getInventory().addItem(crystal);
+						}
+
+						for (String str : m.getConfigurationSection("CrystalTiers").getKeys(false)) {
+							if (tierlores.equals(str)) {
+
+								ItemStack crystal = new ItemStack(Material.NETHER_STAR);
+								ItemMeta crystam = crystal.getItemMeta();
+
+								crystam.setDisplayName(
+										pl.colorize(m.getString("CrystalTiers." + str + ".identifiedname")));
+								ArrayList<String> lore = new ArrayList<String>();
+								for (String lores : idcrystallore) {
+									lore.add(pl.colorize(lores)
+											.replaceAll("%tier%", m.getString("CrystalTiers." + str + ".LoreTier"))
+											.replaceAll("%effect%", String.valueOf(randomEffect()))
+											.replaceAll("%percentage%",
+													String.valueOf(randomPercentage(
+															m.getInt("CrystalTiers." + str + ".minpercentage"),
+															m.getInt("CrystalTiers." + str + ".maxpercentage")))));
+								}
+								crystam.setLore(lore);
+								crystal.setItemMeta(crystam);
+								removeItems(p, pitem, 1);
+								p.getInventory().addItem(crystal);
+							}
 						}
 					}
 				}
-			} else {
-				return;
 			}
 		}
 	}
